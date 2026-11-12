@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "arslan-kareem-portfolio.vercel.app" }],
+      "destination": "https://arslankareem.vercel.app/$1",
+      "permanent": true
+    }
+  ]
+}
