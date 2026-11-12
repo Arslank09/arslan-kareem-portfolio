@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arslan Kareem — Junior AI Engineer</title>
+  <meta name="description" content="Arslan Kareem — BSCS student and Junior AI Engineer building LLM assistants, RAG, semantic search and production APIs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="is-loading">
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__name">Arslan Kareem</span>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <span class="loader__count mono" id="loaderCount">0%</span>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo">AK<span class="accent">.</span></a>
+      <nav class="nav__links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO (parallax) ============ -->
+    <section class="hero">
+      <div class="hero__bg-text" data-speed="-0.25" aria-hidden="true">BUILD</div>
+      <div class="hero__shape hero__shape--1" data-speed="0.35" aria-hidden="true"></div>
+      <div class="hero__shape hero__shape--2" data-speed="-0.15" aria-hidden="true"></div>
+      <div class="hero__shape hero__shape--3" data-speed="0.55" aria-hidden="true"></div>
+
+      <div class="container hero__content" data-speed="0.12">
+        <p class="eyebrow mono">BS Computer Science · Islamabad, Pakistan</p>
+        <h1 class="hero__title">
+          Arslan Kareem<br />
+          <span class="muted">Junior AI Engineer.</span>
+        </h1>
+        <p class="hero__lead">
+          I build LLM-powered assistants, retrieval systems and the real-time, event-driven
+          backends that hold them together.
+        </p>
+        <div class="hero__actions">
+          <a href="#experience" class="btn btn--solid">See my work</a>
+          <a href="#contact" class="btn">Get in touch</a>
+        </div>
+      </div>
+
+      <a href="#about" class="hero__scroll mono" aria-label="Scroll down">scroll ↓</a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container grid">
+        <div class="grid__label reveal"><span class="mono">01</span> About</div>
+        <div class="grid__body">
+          <p class="lead reveal">
+            I'm a Computer Science undergraduate at Federal Urdu University, Islamabad, and a Junior AI
+            Engineer at EHB Technologies, shipping LLM assistants and search features to live, production web services.
+          </p>
+          <p class="reveal">
+            My work is mostly in applied AI: tool-calling LLM agents built with LangChain and LangGraph,
+            multi-provider model support, retrieval-augmented generation, semantic search, and
+            multilingual (English / Roman Urdu) conversation. Alongside that I build
+            the systems underneath them: NestJS microservices, PostgreSQL, Redis, WebSockets and
+            webhook-driven integrations. I care about making AI features safe, measurable and
+            dependable in production.
+          </p>
+          <div class="stats reveal">
+            <div><span class="stats__num" data-count="17">0</span><span class="stats__label">production repositories contributed to</span></div>
+            <div><span class="stats__num" data-count="740" data-suffix="+">0</span><span class="stats__label">commits across all branches in 2026</span></div>
+            <div><span class="stats__num" data-count="6">0</span><span class="stats__label">engineering domains</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section section--alt" id="experience">
+      <div class="container grid">
+        <div class="grid__label reveal"><span class="mono">02</span> Experience</div>
+        <div class="grid__body">
+
+          <div class="role reveal">
+            <div class="role__head">
+              <h3>Junior AI Engineer</h3>
+              <span class="mono muted">2026 — Present · Islamabad</span>
+            </div>
+            <p class="role__company">EHB Technologies (SMC-Private) Ltd</p>
+            <p class="muted">
+              Multi-service ecosystem: commerce, identity, payments and analytics. Next.js frontends,
+              NestJS microservices and a Python AI layer. I work with backend, frontend and AI teams through
+              code review and staged releases.
+            </p>
+          </div>
+
+          <ol class="timeline">
+            <li class="timeline__item reveal">
+              <h4>Conversational AI &amp; LLM Agents</h4>
+              <ul>
+                <li>Built tool-calling LLM assistants with LangChain and LangGraph for buyers, sellers, delivery riders and back-office staff. They support multiple model providers (OpenAI, Anthropic, Groq, Hugging Face), conversation memory and streaming responses.</li>
+                <li>Delivered an AI finance assistant for an internal admin console end to end (tool layer, prompts, secured API and chat UI), so non-technical staff can query live business data in plain language instead of compiling reports by hand.</li>
+                <li>Shipped a retrieval (RAG) pipeline using pgvector embeddings over knowledge chunks, with health checks and diagnostics.</li>
+                <li>Added guardrails: input filtering, response sanitisation, internal-ID scrubbing, role-based tool isolation, session-ownership scoping and credential-leak prevention, all verified by automated tests.</li>
+                <li>Implemented language detection, a translation service and multilingual prompting for English and Roman Urdu.</li>
+                <li>Built evaluation suites for assistant quality and product-recommendation logic with clarification handling.</li>
+              </ul>
+              <div class="tags"><span>Python</span><span>FastAPI</span><span>LangChain</span><span>LangGraph</span><span>RAG</span><span>pgvector</span></div>
+            </li>
+
+            <li class="timeline__item reveal">
+              <h4>Real-Time Messaging System</h4>
+              <ul>
+                <li>Designed buyer–seller chat end to end: schema, REST API, a WebSocket gateway extension, and moderation with rate limits.</li>
+                <li>Built Redis-backed presence ("is this user online"), socket heartbeats, adaptive polling and dead-connection recovery.</li>
+                <li>Delivered in-app and browser push notifications (Web Push) that still arrive after every tab is closed.</li>
+                <li>Created an FAQ knowledge base with non-LLM auto-replies, LLM-assisted replies and translation, and human handoff.</li>
+                <li>Delivered in documented milestones (M1–M13), with integration tests and a verification script.</li>
+              </ul>
+              <div class="tags"><span>WebSockets</span><span>Redis</span><span>NestJS</span><span>Web Push</span><span>React</span></div>
+            </li>
+
+            <li class="timeline__item reveal">
+              <h4>Identity, Auth &amp; Verification Workflows</h4>
+              <ul>
+                <li>Migrated single sign-on to a code-based exchange while keeping legacy token callbacks working.</li>
+                <li>Built unified-identity sync (name, avatar, versioning) across services through internal APIs.</li>
+                <li>Integrated KYC/KYB verification workflows between services using NestJS, Prisma and PostgreSQL. They use webhooks, Redis caching, risk quality scoring and an audit log of every review decision.</li>
+                <li>Wrote hybrid rate limiting (Redis with an in-memory fallback) and a transactional outbox dispatcher with retries.</li>
+              </ul>
+              <div class="tags"><span>OAuth / SSO</span><span>Webhooks</span><span>Outbox Pattern</span><span>Rate Limiting</span></div>
+            </li>
+
+            <li class="timeline__item reveal">
+              <h4>Analytics, Search &amp; Community</h4>
+              <ul>
+                <li>Built cross-service analytics dashboards with date-range queries, cache-key builders and fault-tolerant data sources.</li>
+                <li>Built semantic product search that combines vector embeddings (pgvector) with PostgreSQL full-text and fuzzy matching to improve relevance.</li>
+                <li>Implemented federated search across products, community posts and other verticals, with an overlay results UI.</li>
+                <li>Shipped a community module with posts, Q&amp;A, threaded comments, reactions, trust badges and notifications.</li>
+                <li>Added a refresh-token mechanism and responsive dashboard components.</li>
+              </ul>
+              <div class="tags"><span>PostgreSQL</span><span>Caching</span><span>Next.js</span><span>Data Viz</span></div>
+            </li>
+
+            <li class="timeline__item reveal">
+              <h4>Marketplace Intelligence &amp; Pricing</h4>
+              <ul>
+                <li>Built a "Price Coach" that suggests prices to maximise conversion, tested in shadow mode before launch, plus flash discounts.</li>
+                <li>Created a demand radar driven by search logs, model/variant matching and alerts for listings that aren't getting views.</li>
+                <li>Implemented an automated negotiation ladder with decision logic, plus detection that blocks users from sharing contact details.</li>
+                <li>Generated AI product overviews with versioned schemas, budget-controlled backfills and PII redaction.</li>
+              </ul>
+              <div class="tags"><span>Recommendation Systems</span><span>Experimentation</span><span>LLM Structured Output</span></div>
+            </li>
+
+            <li class="timeline__item reveal">
+              <h4>Payments &amp; Wallet Integration</h4>
+              <ul>
+                <li>Built wallet top-ups, credit purchases, service debits and user-configurable daily spend limits.</li>
+                <li>Exposed read-only finance-report APIs with scoped access for the AI back-office assistant.</li>
+              </ul>
+              <div class="tags"><span>Fintech</span><span>Scoped APIs</span><span>TypeScript</span></div>
+            </li>
+          </ol>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="container grid">
+        <div class="grid__label reveal"><span class="mono">03</span> Projects</div>
+        <div class="grid__body">
+          <div class="cards">
+
+            <a class="card reveal" href="https://github.com/Arslank09/ecommerce-ai-Assistant" target="_blank" rel="noopener">
+              <div class="card__top"><span class="mono muted">01</span><span class="card__arrow">↗</span></div>
+              <h3>AI Shopping Copilot</h3>
+              <p>Works in two modes: it answers product questions from the live catalogue, or acts as an agent that turns a need ("my AC broke") into product recommendations. Detects language automatically and uses any OpenAI-compatible LLM.</p>
+              <div class="tags"><span>FastAPI</span><span>React</span><span>LLM Agents</span></div>
+            </a>
+
+            <a class="card reveal" href="https://github.com/Arslank09/t5-news-summarizer" target="_blank" rel="noopener">
+              <div class="card__top"><span class="mono muted">02</span><span class="card__arrow">↗</span></div>
+              <h3>News Summarizer (Fine-tuned T5)</h3>
+              <p>T5-small fine-tuned on CNN/DailyMail for abstractive summarisation, served through a Streamlit app that compares word counts before and after.</p>
+              <div class="tags"><span>PyTorch</span><span>Transformers</span><span>Streamlit</span></div>
+            </a>
+
+            <a class="card reveal" href="https://github.com/Arslank09/legal_rag-pk" target="_blank" rel="noopener">
+              <div class="card__top"><span class="mono muted">03</span><span class="card__arrow">↗</span></div>
+              <h3>Legal RAG <span class="badge">in progress</span></h3>
+              <p>A retrieval-augmented question-answering system over Pakistani law, built on semantic search and grounded, cited answers.</p>
+              <div class="tags"><span>RAG</span><span>Semantic Search</span><span>LangGraph</span></div>
+            </a>
+
+            <a class="card reveal" href="https://github.com/Arslank09/Inventory-Management-System" target="_blank" rel="noopener">
+              <div class="card__top"><span class="mono muted">04</span><span class="card__arrow">↗</span></div>
+              <h3>Inventory Management System</h3>
+              <p>An object-oriented Python CLI with role-based login (admin and user), product CRUD and low-stock alerts.</p>
+              <div class="tags"><span>Python</span><span>OOP</span></div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section section--alt" id="education">
+      <div class="container grid">
+        <div class="grid__label reveal"><span class="mono">04</span> Education</div>
+        <div class="grid__body">
+          <div class="edu reveal">
+            <div class="role__head">
+              <h3>BS Computer Science</h3>
+              <span class="mono muted">2023 — Present</span>
+            </div>
+            <p class="muted">Federal Urdu University, Islamabad</p>
+          </div>
+          <div class="edu reveal">
+            <div class="role__head">
+              <h3>AI &amp; Data Analytics Program</h3>
+              <span class="mono muted">Certificate course</span>
+            </div>
+            <p class="muted">Python, NumPy and Pandas (EDA and cleaning), Seaborn, Plotly and Streamlit dashboards,
+              SQL and SQLite, supervised and unsupervised ML with Scikit-learn, model evaluation, deep learning,
+              OpenAI API and LangChain, and deployment on Streamlit Cloud.</p>
+          </div>
+          <div class="edu reveal">
+            <div class="role__head">
+              <h3>ICS, Intermediate in Computer Science</h3>
+              <span class="mono muted">2019 — 2021</span>
+            </div>
+            <p class="muted">GDC, Balakot</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARALLAX BAND ============ -->
+    <section class="band" aria-hidden="true">
+      <div class="band__row" data-speed-x="-0.3">LLMs · RAG · Semantic Search · Agents · Real-Time Systems · APIs · LLMs · RAG · Semantic Search · Agents ·</div>
+      <div class="band__row band__row--outline" data-speed-x="0.3">Python · TypeScript · FastAPI · NestJS · Next.js · Redis · PostgreSQL · Python · TypeScript · FastAPI ·</div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="container grid">
+        <div class="grid__label reveal"><span class="mono">05</span> Skills</div>
+        <div class="grid__body skills">
+          <div class="reveal">
+            <h4>AI / ML</h4>
+            <p>LLMs, tool calling, LangChain, LangGraph, RAG, embeddings &amp; pgvector, OpenAI / Anthropic / Groq APIs, Hugging Face, PyTorch, TensorFlow, Scikit-learn, prompt engineering, guardrails, n8n</p>
+          </div>
+          <div class="reveal">
+            <h4>Backend</h4>
+            <p>Python, FastAPI, TypeScript, NestJS, Prisma, REST, WebSockets, webhooks, outbox pattern, rate limiting, auth / SSO, Java, C++ (basics)</p>
+          </div>
+          <div class="reveal">
+            <h4>Frontend</h4>
+            <p>React, Next.js, TypeScript, CSS, Streamlit, accessible components, real-time UI</p>
+          </div>
+          <div class="reveal">
+            <h4>Soft skills</h4>
+            <p>Communication, leadership and team coordination, problem solving, time management</p>
+          </div>
+          <div class="reveal">
+            <h4>Languages</h4>
+            <p>English, Urdu, Hindko</p>
+          </div>
+          <div class="reveal">
+            <h4>Data &amp; Infra</h4>
+            <p>PostgreSQL, SQL, SQLite, Redis, Pandas, NumPy, Seaborn, Plotly, Docker, S3-compatible storage, Streamlit Cloud, Git</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--contact" id="contact">
+      <div class="container grid">
+        <div class="grid__label reveal"><span class="mono">06</span> Contact</div>
+        <div class="grid__body">
+          <h2 class="contact__title reveal">Let's build something<br /><span class="muted">useful together.</span></h2>
+          <div class="contact__links reveal">
+            <a href="mailto:arslankarim9963@gmail.com" class="btn btn--solid">arslankarim9963@gmail.com</a>
+            <a href="tel:+923118892301" class="btn">+92 311 8892301</a>
+            <a href="https://www.linkedin.com/in/arslankareem" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
+            <a href="https://github.com/Arslank09" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner mono">
+      <span>© <span id="year"></span> Arslan Kareem</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
