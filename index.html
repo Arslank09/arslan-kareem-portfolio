@@ -318,6 +318,37 @@
     </div>
   </footer>
 
+
+  <!-- ============ AI ASSISTANT ============ -->
+  <div class="assistant" id="assistant">
+    <section class="assistant__panel" id="assistantPanel" role="dialog" aria-label="Ask about Arslan" hidden>
+      <header class="assistant__head">
+        <div>
+          <strong>Ask about Arslan</strong>
+          <span class="mono muted">AI assistant · answers from his profile</span>
+        </div>
+        <button class="assistant__close" type="button" aria-label="Close assistant">&times;</button>
+      </header>
+      <div class="assistant__messages" aria-live="polite">
+        <div class="assistant__msg assistant__msg--assistant">Hi! 👋 I can answer questions about Arslan: his work, studies, projects, skills and how to contact him. English ya Roman Urdu, dono chalega.</div>
+        <div class="assistant__chips">
+          <button type="button">Where does Arslan work?</button>
+          <button type="button">What is he studying?</button>
+          <button type="button">What are his main skills?</button>
+          <button type="button">How can I contact him?</button>
+        </div>
+      </div>
+      <form class="assistant__form">
+        <textarea class="assistant__input" rows="1" maxlength="600" placeholder="Ask a question…" aria-label="Your question"></textarea>
+        <button class="assistant__send" type="submit" aria-label="Send">&#8593;</button>
+      </form>
+    </section>
+    <button class="assistant__toggle" type="button" aria-expanded="false" aria-controls="assistantPanel">
+      <span class="assistant__dot"></span> Ask AI about me
+    </button>
+  </div>
+
   <script src="script.js"></script>
+  <script src="assistant.js"></script>
 </body>
 </html>
