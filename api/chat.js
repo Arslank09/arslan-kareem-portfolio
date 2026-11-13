@@ -5,7 +5,14 @@
 import { KNOWLEDGE } from "./_knowledge.js";
 
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-const MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
+// Tried in order; if Groq says a model doesn't exist / isn't available, the next one is used.
+const MODELS = [
+  process.env.GROQ_MODEL,
+  "openai/gpt-oss-120b",
+  "llama-3.3-70b-versatile",
+  "openai/gpt-oss-20b",
+  "llama-3.1-8b-instant",
+].filter((m, i, a) => m && a.indexOf(m) === i);
 
 const MAX_HISTORY = 8; // last N messages sent to the model
 const MAX_CHARS = 600; // per message
@@ -87,37 +94,55 @@ export default async function handler(req, res) {
 
   try {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 20000);
-    const r = await fetch(GROQ_URL, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        temperature: 0.3,
-        max_tokens: 450,
-        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
-      }),
-      signal: controller.signal,
-    });
+    const timer = setTimeout(() => controller.abort(), 25000);
+    let lastStatus = 0;
+
+    for (const model of MODELS) {
+      const isReasoning = model.startsWith("openai/gpt-oss");
+      const r = await fetch(GROQ_URL, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model,
+          temperature: 0.3,
+          // reasoning models spend some tokens thinking before the answer
+          max_tokens: isReasoning ? 1200 : 450,
+          ...(isReasoning ? { reasoning_effort: "low", include_reasoning: false } : {}),
+          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
+        }),
+        signal: controller.signal,
+      });
+
+      if (r.ok) {
+        const data = await r.json();
+        const reply = data?.choices?.[0]?.message?.content?.trim();
+        if (reply) {
+          clearTimeout(timer);
+          return res.status(200).json({ reply });
+        }
+        console.error("Empty reply from", model);
+        lastStatus = 502;
+        continue;
+      }
+
+      lastStatus = r.status;
+      const detail = await r.text().catch(() => "");
+      console.error("Groq error", model, r.status, detail.slice(0, 300));
+      // try the next model only when this one is missing / not allowed / bad params
+      if (![400, 403, 404].includes(r.status)) break;
+    }
     clearTimeout(timer);
 
-    if (!r.ok) {
-      const detail = await r.text().catch(() => "");
-      console.error("Groq error", r.status, detail.slice(0, 300));
-      const msg =
-        r.status === 429
-          ? "The assistant is busy right now. Please try again in a minute."
+    const msg =
+      lastStatus === 429
+        ? "The assistant is busy right now. Please try again in a minute."
+        : lastStatus === 401
+          ? "The assistant isn't configured correctly. Please email arslankarim9963@gmail.com."
           : "Sorry, I couldn't answer right now. Please try again.";
-      return res.status(502).json({ error: msg });
-    }
-
-    const data = await r.json();
-    const reply = data?.choices?.[0]?.message?.content?.trim();
-    if (!reply) return res.status(502).json({ error: "Sorry, I couldn't answer right now." });
-    return res.status(200).json({ reply });
+    return res.status(502).json({ error: msg });
   } catch (err) {
     console.error("Chat handler failed", err);
     return res.status(504).json({ error: "The assistant took too long. Please try again." });
